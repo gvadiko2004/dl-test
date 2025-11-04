@@ -8,14 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const isActive = menu.classList.toggle("active");
     btn.classList.toggle("active");
 
-    if (isActive) {
-      resetItems();
+    isActive ? resetItems() : resetItems();
 
-      setTimeout(() => {
-        animateItems();
-      }, 500);
-    } else {
-      resetItems();
+    if (isActive) {
+      setTimeout(() => animateItems(), 500);
     }
   });
 
@@ -30,15 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function resetItems() {
-    items.forEach((item) => {
+    items.forEach(item => {
       item.style.transition = "none";
       item.style.opacity = "0";
       item.style.transform = "translateX(-40px)";
     });
   }
 
-  // ЧТОБЫ ЗАКРЫВАТЬ МЕНЮ ПРИ КЛИКЕ ПО ITЕМУ — СТАВИМ ОБРАБОТЧИК ОТДЕЛЬНО!
-  items.forEach((item) => {
+  items.forEach(item => {
     item.addEventListener("click", () => {
       menu.classList.remove("active");
       btn.classList.remove("active");
@@ -48,7 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Slide 1
-
 document.addEventListener("DOMContentLoaded", () => {
   const bubble = document.querySelector(".hero-img__content");
   const element = document.getElementById("typing-text");
@@ -60,13 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function type() {
     element.innerHTML = text.slice(0, index);
     index++;
-
-    if (index <= text.length) {
-      setTimeout(type, 50);
-    }
+    if (index <= text.length) setTimeout(type, 50);
   }
 
-  // ⏳ через 3 секунды: показываем тучу и запускаем typing
   setTimeout(() => {
     bubble.classList.add("show");
     type();
@@ -74,42 +64,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Slide 2
-
 document.addEventListener("DOMContentLoaded", () => {
   const targetImg = document.querySelector(".present__end .end img");
   const targetTitle = document.querySelector(".present__info-title");
   const targetSubtitle = document.querySelector(".present__info-subtitle");
 
-  const items = Array.from(
-    document.querySelectorAll(".present-choose__items-item")
-  );
-
-  // Тексты для каждого варианта (по порядку картинок)
+  const items = Array.from(document.querySelectorAll(".present-choose__items-item"));
   const presentContent = [
-    {
-      title: "Best sock ever",
-      text: "Regular sock never hides a gift inside. But ours can. Feel the real magic of holidays.",
-    },
-    {
-      title: "Magic winter gift",
-      text: "Not just a present — a piece of happiness wrapped in warmth. Choose it and smile :)",
-    },
-    {
-      title: "Premium Christmas mystery",
-      text: "Better than expectations. Warmer than winter. More pleasant than you imagine.",
-    },
+    { title: "Best sock ever", text: "Regular sock never hides a gift inside. But ours can. Feel the real magic of holidays." },
+    { title: "Magic winter gift", text: "Not just a present — a piece of happiness wrapped in warmth. Choose it and smile :)" },
+    { title: "Premium Christmas mystery", text: "Better than expectations. Warmer than winter. More pleasant than you imagine." }
   ];
 
   function activate(item, index) {
-    items.forEach((i) => i.classList.remove("active"));
+    items.forEach(i => i.classList.remove("active"));
     item.classList.add("active");
 
     const img = item.querySelector("img");
-    if (img && targetImg) {
-      targetImg.src = img.getAttribute("src");
-    }
+    if (img && targetImg) targetImg.src = img.getAttribute("src");
 
-    // Меняем текст
     if (presentContent[index]) {
       targetTitle.textContent = presentContent[index].title;
       targetSubtitle.textContent = presentContent[index].text;
@@ -125,12 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // FORM
-
 document.addEventListener("DOMContentLoaded", () => {
   const checkbox = document.getElementById("agree");
   const button = document.getElementById("sendBtn");
 
-  checkbox.addEventListener("change", () => {
-    button.disabled = !checkbox.checked;
-  });
+  checkbox.addEventListener("change", () => button.disabled = !checkbox.checked);
 });
