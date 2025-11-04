@@ -30,6 +30,7 @@ body {
   padding: 0;
   background-color: #141429;
   height: 100vh;
+  overflow: auto;
 }
 
 img {
@@ -417,7 +418,7 @@ a {
 .hero__snow {
   position: absolute;
   bottom: 0;
-  left: -25%;
+  left: -15vw;
   pointer-events: none;
 }
 @media (max-width: 451px) {
@@ -685,7 +686,7 @@ a {
 }
 .present .snow {
   position: absolute;
-  left: -25%;
+  left: -15vw;
   top: 0;
   z-index: 1;
 }
