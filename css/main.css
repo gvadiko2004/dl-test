@@ -1081,6 +1081,10 @@ form {
   width: 100%;
 }
 
+.inp-btn {
+  text-align: left;
+}
+
 .menu {
   position: relative;
 }
